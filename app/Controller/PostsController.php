@@ -58,6 +58,44 @@ class PostsController extends AppController {
             $this->Session->setFlash(__('The information could not be saved. Please, try again.'));
         }
     }
+
+    public function view($id=null)
+    {
+    	if(!$id)
+    	{
+    		$this->Session->setFlash(__('Illegal Id value. Where you going>'));
+    		echo $this->redirect('/users/dashboard');
+    	}
+    	else
+    	{
+    		$result = $this->Post->find('first',array('conditions'=>array('id'=>$id)));
+    		$this->set('postData',$result);
+    	}
+    }
+
+    public function acceptMentee($postId=null)
+    {
+    	if(!$postId)
+    	{
+    		$this->Session->setFlash(__('Illegal Id value. Where you going>'));
+    		echo $this->redirect('/users/dashboard');
+    	}
+    	$result = $this->find('first',array('conditions'=>array('id'=>$postId));
+    	if($result['Post']['mentor_id']==0)
+    	{
+    		$this->Post->id = $postId;
+    		$this->request->data['Post']['mentor_id'] = $this->Session->read('Auth.User.id');
+    		if($this->Post->save())
+    		{
+    			$this->Session->setFlash(__('Congratulations! You have a new mentee.'));
+    			$this->view($postId);
+    		}
+
+    	}
+
+    }
+
+
 }
 
 ?>
