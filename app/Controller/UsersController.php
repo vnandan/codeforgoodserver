@@ -85,7 +85,7 @@ public function index() {
 
     public function dashboard()
     {
-
+    	$this->set('userRole',0);
     }
 
 
