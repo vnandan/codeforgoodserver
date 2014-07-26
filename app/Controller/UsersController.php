@@ -90,6 +90,7 @@ public function index() {
     public function dashboard()
     {
     	$this->set('userRole',$this->Session->read('Auth.User.role'));
+    	$this->set('myPdp',$this->User->Post->find('first',array('conditions'=>array('Post.active'=>1,'Post.user_id'=>$this->Session->read('Auth.User.id')))));
     }
 
 
