@@ -81,31 +81,31 @@
 	</div>
 <?php } else if($userRole === 'mentor') { ?>
 	<div class="large-12 small-12 columns dashboard-tabs">
-	      <ul class="left">
-	        <li class="active">Search Problems</li>
-	      </ul>
-	      <ul class="right">
-	        <li><a href="logout">Logout</a></li>
-	      </ul>
-	    </div>
-	<div class="clear-fix"></div>
+      <ul class="left">
+        <li class="active">Search Problems</li>
+      </ul>
+      <ul class="right">
+        <li><a href="logout">Logout</a></li>
+      </ul>
+    </div>
+	<div class="row clear-fix"></div>
 	<div class='row'>
 		<div class="large-8 small-12 columns">
 			<form class="	search-form" method="post" action="dashboard">
 				<input type="text" id="searchBox">
         		<input type="submit" value="Search">
         	</form>
-        	<div class="card">
+        	<div>
         		<?php 
         			for($i=0; $i<count($recPosts); $i++) {
         				?>
-        					<div class="large-12 small-12 columns">
+        					<div class="large-12 small-12 columns card margin">
         						<div class="large-10 small-10 columns">
-        							<div class='post-title'><?php echo $recPosts['Post']['statement']; ?></div>
-        							<div class='post-desc'><?php echo substr($recPosts['Post']['statement'], 0, 20)."..."; ?></div>	
+        							<div class='post-title'><?php echo $recPosts[$i]['p']['statement']; ?></div>
+        							<div class='post-desc'><?php echo substr($recPosts[$i]['p']['description'], 0, 20)."..."; ?></div>	
         						</div>
         						<div class="large-2 small-2 columns">
-        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts['Post']['id'].'"' ?>><span class="label">Yes!</span></a>
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="label">Yes!</span></a>
         						</div>
         					</div>
         				<?php

@@ -98,8 +98,13 @@ span {
 }
 
 .label {
-	padding: 2px;
+	padding: 2px 5px;
 	border-radius: 5px;
 	background: #993D00;
 	margin: 0 auto;
+	float: right;
+}
+
+.margin {
+	margin: 5px 0;
 }
