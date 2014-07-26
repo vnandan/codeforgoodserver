@@ -105,7 +105,7 @@
         							<div class='post-desc'><?php echo substr($recPosts['Post']['statement'], 0, 20)."..."; ?></div>	
         						</div>
         						<div class="large-2 small-2 columns">
-        							<a <?php echo 'href="/codeforgoodserver/posts/view/'.$recPosts['Post']['id'].'"' ?>><span class="label">Yes!</span></a>
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts['Post']['id'].'"' ?>><span class="label">Yes!</span></a>
         						</div>
         					</div>
         				<?php
