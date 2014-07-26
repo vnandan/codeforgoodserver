@@ -42,11 +42,6 @@ class PostsController extends AppController {
             	$set4 = array_intersect($mergeWords, $referenceWords);
             	$set4 = array_unique($set4);
 
-            	$query = "select count(*),post_id,p.* from keywords as k inner join posts as p on k.post_id =p.id  where k.word in (select name from skills where user_id = ".$this->Session->read('Auth.User.id').") group by k.post_id order by count(*) Desc LIMIT 10";
-            	$result = $this->Post->query($query);
-
-            	$this->set('recPosts',$result);
-
             	$data = array();
 
             	foreach ($set4 as $Word) {

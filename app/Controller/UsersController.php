@@ -89,6 +89,8 @@ public function index() {
 
     public function dashboard()
     {
+    	
+
     	$this->set('userRole',$this->Session->read('Auth.User.role'));
     	if($this->Session->read('Auth.User.role')=='mentee')
     	{
@@ -99,6 +101,21 @@ public function index() {
     	{
     		$this->recursive =2;
     		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
+
+    		if($this->request->is('post'))
+    	{
+    		$searchTerm = $_POST['search'];
+    		$query = "SELECT *  FROM `posts` WHERE `description` LIKE '".$searchTerm."' OR `objective` LIKE '".$searchTerm."'";
+    		$this->User->query($query);
+            	$result = $this->User->query($query);
+            	$this->set('recPosts',$result);
+    	}
+    	else
+    	{
+    	$query = "select count(*),post_id,p.* from keywords as k inner join posts as p on k.post_id =p.id  where k.word in (select name from skills where user_id = ".$this->Session->read('Auth.User.id').") group by k.post_id order by count(*) Desc LIMIT 10";
+            	$result = $this->User->query($query);
+            	$this->set('recPosts',$result);
+        }
     	}
     }
 
