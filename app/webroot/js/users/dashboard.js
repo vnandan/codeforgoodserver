@@ -18,12 +18,4 @@ $(document).ready(function(){
 		$(".content").getNiceScroll().resize();
 		return false;
 	});
-
-	// $('.dashboard-select').change(function(){
-	// 	if($(this).val()==18){
-	// 		window.location.href='http://www.bdashboard.vit.ac.in/';
-	// 	} else {
-	// 		window.location.href=$('.dashboard-select').find(":selected").attr('link');
-	// 	}
-	// });
 });

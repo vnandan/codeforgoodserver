@@ -10,7 +10,7 @@
 <?php //echo $this->Html->script($js, array('block' => 'layout_scripts')); ?>
 <?php echo $this->Html->script($js); ?>
 
-<?php if($userRole == 0) { // Mentee ?>
+<?php if($userRole == 'mentee') { // Mentee ?>
 	<div class='row'>
 		<div class="large-12 small-12 columns dashboard-tabs">
 	      <ul class="left">
@@ -37,12 +37,14 @@
 	    <div id="panel2" class="dashboard-tab-content">
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
-	        	
+	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns login-form">
+	        		
+	        	</div>
 	        </div>
 	      </div>
 	    </div>
 	</div>
-<?php } else if($userRole == 1) { ?>
+<?php } else if($userRole == 'mentor') { ?>
 	
 <?php } else if($userRole == 2) { ?>
 	

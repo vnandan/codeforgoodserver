@@ -33,6 +33,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css('core');
 
 		echo $this->Html->script('jquery-1.11.1.min');
+		echo $this->Html->script('core');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
