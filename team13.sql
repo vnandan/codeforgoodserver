@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2014 at 01:32 AM
+-- Generation Time: Jul 27, 2014 at 03:01 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `team13`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keywords`
+--
+
+CREATE TABLE IF NOT EXISTS `keywords` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `word` varchar(40) NOT NULL,
+  `post_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -41,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `meetings` (
 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
-  `posts_id` int(32) NOT NULL,
+  `post_id` int(10) NOT NULL,
   `sender` tinyint(1) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -64,6 +77,25 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `mentor_id`, `statement`, `description`, `plan`, `objective`, `active`, `created`, `modified`) VALUES
+(1, 3, 0, 'dfkngf', 'fmhb', '', '', 1, '2014-07-27 01:47:58', '2014-07-27 01:47:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `refkeywords`
+--
+
+CREATE TABLE IF NOT EXISTS `refkeywords` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `word` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -128,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `mob`, `dob`, `profession`, `role`, `language`, `active`, `created`, `modified`) VALUES
-(3, 'v', 'v@v.comd', 'f2bc79ae5952f8251bb32953fbea4b50c1915a7e9d4d257275facbcf4137955b', 2, '2014-07-27', '', 'mentee', 'e', 0, '2014-07-27 01:10:09', '2014-07-27 01:10:09');
+(3, 'v', 'v@v.com', 'f2bc79ae5952f8251bb32953fbea4b50c1915a7e9d4d257275facbcf4137955b', 2, '2014-07-27', '', 'mentee', 'e', 0, '2014-07-27 01:10:09', '2014-07-27 01:10:09');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
