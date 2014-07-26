@@ -14,7 +14,7 @@ public $components = array(
 
 public function beforeFilter() {
     parent::beforeFilter();
-    $this->Auth->allow('add', 'logout');
+    $this->Auth->allow('add', 'logout','mentorSkill');
 }
 
 public function login() {
@@ -47,12 +47,33 @@ public function index() {
         $this->set('users', $users);
     }
 
- public function add() {
-        if ($this->request->is('post')) {
+ public function mentorSkill($id,$status)
+ {
+ 	$this->set('id',$id);
+ 	if ($status!='show')
+ 	{
+	 	$result = $this->User->find('first',array('conditions'=>array('id'=>$id)));
+	 	$this->request->data['User']['id'] = $id;
+	 	if ($this->User->save($this->request->data))
+	 	{
+	            $this->Session->setFlash('Info Saved!');
+	            return $this->redirect('/');
+	 	}
+ 	}
+}
+
+ public function add()
+ {
+        if ($this->request->is('post'))
+        {
             $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
+            if ($this->User->save($this->request->data))
+            {
+                if($this->request->data['User']['role']=='mentor')
+                {
+                	$this->autoRender = false;
+                	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$this->User->getLastInsertId().'/show'));
+                }
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
