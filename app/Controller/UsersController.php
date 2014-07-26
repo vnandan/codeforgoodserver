@@ -78,6 +78,10 @@ public function index() {
                 	$this->autoRender = false;
                 	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$id.'/show'));
                 }
+                else
+                {
+                	$this->redirect('/users/dashboard');
+                }	
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
@@ -85,7 +89,7 @@ public function index() {
 
     public function dashboard()
     {
-    	$this->set('userRole',0);
+    	$this->set('userRole',$this->Session->read('Auth.User.role'));
     }
 
 
