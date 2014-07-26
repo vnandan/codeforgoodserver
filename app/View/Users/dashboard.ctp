@@ -1,4 +1,6 @@
-<?php if($this->user_role == 0) { // Mentee ?>
+<?php
+/*
+if($this->user_role == 0) { // Mentee ?>
 	<div class='row'>
 		<div class="large-12 small-12 columns dashboard-tabs">
 	      <ul>
@@ -27,4 +29,12 @@
 	
 <?php } else if($this->user_role == 3) { ?>
 	
-<?php } ?>
+<?php }*/ ?>
+
+<?php
+
+echo $this->Form->create('Post',array('action'=>'add'));
+echo $this->Form->input('statement',array('label'=>'Statement'));
+echo $this->Form->input('description',array('label'=>'Description'));
+echo $this->Form->end(__('Submit')); 
+?>

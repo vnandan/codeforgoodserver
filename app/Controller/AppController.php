@@ -32,12 +32,22 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $components=array(
-        'Session',
-        'Auth',
-        'RequestHandler'
-    );
+
+    public $components = array(
+    	'Session',
+    	'RequestHandler',
+    'Auth' => array(
+        'authenticate' => array(
+            'Form' => array(
+            	'fields'=>array('username'=>'email'),
+                'passwordHasher' => array(
+                    'className' => 'Simple',
+                    'hashType' => 'sha256'
+                )
+            )
+        )
+    )
+);
     public $helpers = array('Js');
-     
-        
+
 }
