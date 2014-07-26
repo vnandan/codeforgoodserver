@@ -91,3 +91,15 @@ span {
 	color: #000;	
 	margin-bottom: 15px;
 }
+
+.topic-header {
+	font-family: 'rlight';
+	font-size: 1.2em;
+}
+
+.label {
+	padding: 2px;
+	border-radius: 5px;
+	background: #993D00;
+	margin: 0 auto;
+}
