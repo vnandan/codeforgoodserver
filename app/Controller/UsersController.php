@@ -2,6 +2,16 @@
 
 class UsersController extends AppController {
 
+public $components = array(
+    'Auth' => array(
+        'authenticate' => array(
+            'Form' => array(
+                'fields' => array('username' => 'email')
+            )
+        )
+    )
+);
+
 public function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('add', 'logout');
@@ -12,8 +22,20 @@ public function login() {
         if ($this->Auth->login()) {
             return $this->redirect($this->Auth->redirect());
         }
-        $this->Session->setFlash(__('Invalid username or password, try again'));
+        else
+        {
+        $result = $this->User->find('first',array('conditions'=>array('email'=>$this->request->data['User']['email'])));
+        if(!$result)
+        {
+        	$this->redirect('/users/add');
+        }
+        else
+        {
+         $this->Session->setFlash(__('Invalid Password.'));
+        }
+
     }
+}
 }
 
 public function logout() {
@@ -32,9 +54,7 @@ public function index() {
                 $this->Session->setFlash(__('The user has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
     }
 

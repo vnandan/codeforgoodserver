@@ -70,7 +70,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'codeforgood',
+		'database' => 'team13',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
