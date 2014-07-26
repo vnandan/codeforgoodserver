@@ -8,7 +8,9 @@ public function beforeFilter() {
 }
 
 public function login() {
+	    
     if ($this->request->is('post')) {
+
         if ($this->Auth->login()) {
             return $this->redirect($this->Auth->redirect());
         }
@@ -66,6 +68,9 @@ public function index() {
  {
         if ($this->request->is('post'))
         {
+        //	$this->set('enteredEmail',$this->request->data['User']['email']);
+		//	$this->set('enteredPassword',$this->request->data['User']['password']);
+    
             $this->User->create();
             if ($this->User->save($this->request->data))
             {
