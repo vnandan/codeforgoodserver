@@ -3,7 +3,8 @@
 }
 
 .dashboard-select {
-	background-color:#283B66;
+	/*background-color:#283B66;*/
+	background-color:#993d00;
 	color:white;
 	font-size:0.9em!important;
 	border:1px #283B66 solid;
@@ -16,7 +17,7 @@
 
 .dashboard-tabs { 
 	width:100%;
-	background-color:#1f3a66;
+	background-color:#993d00;
 }
 
 .dashboard-tabs ul { 
@@ -70,4 +71,22 @@
 
 .table { 
 	width:100%
+}
+
+span {
+	color: #fff;
+}
+
+.search-form {
+
+}
+
+.search-form input[type="text"] {
+	width: 85%;
+	display: inline;
+}
+
+.search-form input[type="submit"] {
+	width: 10%;
+	display: inline;
 }
