@@ -1,4 +1,8 @@
 <?php
+
+/*
+if($this->user_role == 0) { // Mentee ?>
+=======
 	$css = array('users/dashboard');
 	$js  = array('users/dashboard');
 ?>
@@ -11,6 +15,7 @@
 <?php echo $this->Html->script($js); ?>
 
 <?php if($userRole == 0) { // Mentee ?>
+>>>>>>> 2731fa9f279b85436f639438df2f92e89a5869b5
 	<div class='row'>
 		<div class="large-12 small-12 columns dashboard-tabs">
 	      <ul class="left">
@@ -48,4 +53,12 @@
 	
 <?php } else if($userRole == 3) { ?>
 	
-<?php } ?>
+<?php }*/ ?>
+
+<?php
+
+echo $this->Form->create('Post',array('action'=>'add'));
+echo $this->Form->input('statement',array('label'=>'Statement'));
+echo $this->Form->input('description',array('label'=>'Description'));
+echo $this->Form->end(__('Submit')); 
+?>
