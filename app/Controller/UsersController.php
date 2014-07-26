@@ -90,7 +90,16 @@ public function index() {
     public function dashboard()
     {
     	$this->set('userRole',$this->Session->read('Auth.User.role'));
+    	if($this->Session->read('Auth.User.role')=='mentee')
+    	{
     	$this->set('myPdp',$this->User->Post->find('first',array('conditions'=>array('Post.active'=>1,'Post.user_id'=>$this->Session->read('Auth.User.id')))));
+    	}
+    	else
+    	if($this->Session->read('Auth.User.role')=='mentor')
+    	{
+    		$this->recursive =2;
+    		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
+    	}
     }
 
 

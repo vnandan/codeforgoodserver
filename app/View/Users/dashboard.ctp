@@ -1,7 +1,4 @@
 <?php
-echo $this->Session->read('Auth.User.role');
-?>
-<?php
 	$css = array('users/dashboard');
 	$js  = array('users/dashboard');
 ?>
@@ -13,7 +10,9 @@ echo $this->Session->read('Auth.User.role');
 <?php //echo $this->Html->script($js, array('block' => 'layout_scripts')); ?>
 <?php echo $this->Html->script($js); ?>
 
-<?php if($userRole === 'mentee') { // Mentee ?>
+<?php if($userRole === 'mentee')
+{
+	?>
 	<div class='row'>
 		<div class="large-12 small-12 columns dashboard-tabs">
 	      <ul class="left">
@@ -79,7 +78,9 @@ echo $this->Session->read('Auth.User.role');
 	        </div>
 	      </div>
 	    </div>
-	    <?php } ?>
+	    <?php 
+	    }	//END MENTEE USER INTERPHASE.
+	     ?>
 	</div>
 <?php } else if($userRole === 'mentor') { ?>
 	<div class='row'>
