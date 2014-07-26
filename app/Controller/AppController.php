@@ -31,4 +31,17 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public $components=array(
+        'Session',
+        'Auth'=>array(
+            'loginredirect'=>'/',
+            'logoutRedirect'=>'/',
+            'authorize'=>array('Controller')
+        ),
+        'RequestHandler'
+    );
+    public $helpers = array('Js');
+     
+        
 }
