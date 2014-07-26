@@ -56,7 +56,15 @@ public function index() {
 	 	$this->request->data['User']['id'] = $id;
 	 	if ($this->User->save($this->request->data))
 	 	{
-	            $this->Session->setFlash('Info Saved!');
+	            //$this->Session->setFlash('Info Saved!');
+	 			$wordList = $this->explode(',', $this->request->data['User']['skills']);
+	 			$data = array();
+	 			foreach ($wordList as $Word) {
+	 				$Word = trim($Word);
+	 				$Word = stripslashes($Word);
+	 				$data[] = array('name'=>$Word,'user_id'=>$id);
+	 			}
+
 	            return $this->redirect('/');
 	 	}
  	}
@@ -77,6 +85,11 @@ public function index() {
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
+    }
+
+    public function dashboard()
+    {
+    	
     }
 
 
