@@ -32,6 +32,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css('foundation');
 		echo $this->Html->css('core');
 
+		echo $this->Html->script('jquery-1.11.1.min');
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -40,7 +42,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header" class="row header">
-			<span class="title-text">enable india</span>
+			<span class="title-text">Enable India</span>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>

@@ -50,7 +50,6 @@ form .date-select {
 	background: #e6e6e6;
 	border-bottom: solid 2px #aaa;
 	box-shadow: 0 0 5px #aaa;
-	margin-bottom: 20px;
 	padding: 10px; 
 }
 
@@ -72,4 +71,16 @@ form .date-select {
 	padding: 10px;
 	display: block;
 	margin: 20px auto;
+}
+
+.box {
+	margin-top: 25px;
+}
+
+.big-padding {
+	padding: 20px;
+}
+
+form textarea {
+	resize: none;
 }

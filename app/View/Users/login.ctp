@@ -1,4 +1,4 @@
-<div class="users form">
+<div class="users form box">
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User', array("class"=>"large-4 small-8 large-offset-4 small-offset-2 login-form")); ?>
     <fieldset>
