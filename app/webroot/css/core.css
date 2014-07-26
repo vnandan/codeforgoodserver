@@ -27,7 +27,7 @@ form {
 }
 
 form input[type="submit"] {
-	background: #4d90fe;
+	background: #325ea6;
 	border-color: #3079ed;
 	padding: 8px;
 	border-radius: 2px;
@@ -47,7 +47,9 @@ form .date-select {
 }
 
 .header {
-	background: #e6e6e6;
+	/*background: #e6e6e6;*/
+	background: #325ea6;
+	color: #fff;
 	border-bottom: solid 2px #aaa;
 	box-shadow: 0 0 5px #aaa;
 	padding: 10px; 

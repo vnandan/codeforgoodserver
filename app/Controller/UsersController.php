@@ -85,7 +85,7 @@ public function index() {
 
     public function dashboard()
     {
-    	$this->set('userRole',0);
+    	$this->set('userRole',$this->Session->read('Auth.User.role'));
     }
 
 
