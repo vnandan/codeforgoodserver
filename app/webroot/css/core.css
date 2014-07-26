@@ -1,0 +1,64 @@
+@font-face {
+	src: url('rlight.ttf');
+	font-family: 'rlight';
+}
+
+@font-face {
+	src: url('rregular.ttf');
+	font-family: 'rregular';
+}
+
+@font-face {
+	src: url('rbold.ttf');
+	font-family: 'rbold';
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #f6f6f6;
+	font-family: 'rregular';
+}
+
+form {
+	padding: 20px;
+	background: #fff;
+	box-shadow: 0 2px 4px #aaa;
+}
+
+form input[type="submit"] {
+	background: #4d90fe;
+	border-color: #3079ed;
+	padding: 8px;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 0.8em;
+}
+
+form .date-select {
+	width: 100px;
+}
+
+.any-button {
+	background: #4d90fe;
+	border-color: #3079ed;
+	padding: 2px;
+	border-radius: 2px;
+}
+
+.header {
+	background: #e6e6e6;
+	border-bottom: solid 2px #aaa;
+	box-shadow: 0 0 5px #aaa;
+	margin-bottom: 20px;
+	padding: 10px; 
+}
+
+.title-text {
+	font-size: 2.0em;
+	font-family: 'rlight';
+}
+
+.sub-title {
+	font-size: 1.2em;
+}
