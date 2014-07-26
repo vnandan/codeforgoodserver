@@ -4,8 +4,8 @@
     <fieldset>
         <legend><?php echo __('Login'); ?></legend>
         <?php
-	        echo $this->Form->input('email');
-	        echo $this->Form->input('password');
+	        echo $this->Form->input('email', array('required' => true));
+	        echo $this->Form->input('password', array('required' => true));
 	        echo $this->Form->submit('Login');
 	    ?>
 	</fieldset>
