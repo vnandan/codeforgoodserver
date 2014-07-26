@@ -2,9 +2,19 @@
 
 class UsersController extends AppController {
 
+public $components = array(
+    'Auth' => array(
+        'authenticate' => array(
+            'Form' => array(
+                'fields' => array('username' => 'email')
+            )
+        )
+    )
+);
+
 public function beforeFilter() {
     parent::beforeFilter();
-    $this->Auth->allow('add', 'logout');
+    $this->Auth->allow('add', 'logout','mentorSkill');
 }
 
 public function login() {
@@ -12,8 +22,20 @@ public function login() {
         if ($this->Auth->login()) {
             return $this->redirect($this->Auth->redirect());
         }
-        $this->Session->setFlash(__('Invalid username or password, try again'));
+        else
+        {
+        $result = $this->User->find('first',array('conditions'=>array('email'=>$this->request->data['User']['email'])));
+        if(!$result)
+        {
+        	$this->redirect('/users/add');
+        }
+        else
+        {
+         $this->Session->setFlash(__('Invalid Password.'));
+        }
+
     }
+}
 }
 
 public function logout() {
@@ -25,17 +47,51 @@ public function index() {
         $this->set('users', $users);
     }
 
- public function add() {
-        if ($this->request->is('post')) {
+ public function mentorSkill($id,$status='hide')
+ {
+ 	$this->set('id',$id);
+ 	if ($status!='show')
+ 	{
+	 	$result = $this->User->find('first',array('conditions'=>array('id'=>$id)));
+	 	$this->request->data['User']['id'] = $id;
+	 	if ($this->User->save($this->request->data))
+	 	{
+	            //$this->Session->setFlash('Info Saved!');
+	 			$wordList = explode(',', $this->request->data['User']['skills']);
+	 			$data = array();
+	 			foreach ($wordList as $Word)
+	 			{
+	 				$Word = trim($Word);
+	 				$Word = stripslashes($Word);
+	 				$data[] = array('name'=>$Word,'user_id'=>$id);
+	 			}
+	 			$this->User->Skill->saveMany($data);
+
+	            return $this->redirect('/');
+	 	}
+ 	}
+}
+
+ public function add()
+ {
+        if ($this->request->is('post'))
+        {
             $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
+            if ($this->User->save($this->request->data))
+            {
+                if($this->request->data['User']['role']=='mentor')
+                {
+                	$this->autoRender = false;
+                	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$this->User->getLastInsertId().'/show'));
+                }
             }
-            $this->Session->setFlash(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
+    }
+
+    public function dashboard()
+    {
+
     }
 
 
