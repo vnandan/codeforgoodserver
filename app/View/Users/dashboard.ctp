@@ -10,12 +10,16 @@
 <?php //echo $this->Html->script($js, array('block' => 'layout_scripts')); ?>
 <?php echo $this->Html->script($js); ?>
 
-<?php if($userRole == 'mentee') { // Mentee ?>
+<?php if($userRole === 'mentee') { // Mentee ?>
 	<div class='row'>
 		<div class="large-12 small-12 columns dashboard-tabs">
 	      <ul class="left">
 	        <li class="active"><a href="#panel1">Post Problem</a></li>
-	        <li><a href="#panel2">My PDP</a></li>
+	        <?php if(count($myPdp) > 0) { ?>
+	        	<li><a href="#panel2">My PDP</a></li>
+	        <?php } else { ?>
+	        	<span>My PDP</span>
+	        <?php } ?>
 	      </ul>
 	      <ul class="right">
 	        <li><a href="logout">Logout</a></li>
@@ -34,6 +38,7 @@
 	        </div>
 	      </div>
 	    </div>
+	    <?php if(count($myPdp) > 0) { ?>
 	    <div id="panel2" class="dashboard-tab-content">
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
@@ -48,13 +53,13 @@
 		        	</div>
 		        	<?php echo $this->Form->create('Post'); ?>
 		        	<div class="large-12 small-12 columns">
-		        		<div class="large-6 small-6 columns">
+		        		<div class="large-6 small-12 columns">
 			        		<label>Objective</label>
-			        		<?php echo $this->Form->input('objective', array('value' => $myPdp['objective'], 'type' => 'textarea')); ?>
+			        		<p><?php echo $myPdp['objective']; ?></p>
 			        	</div>
-			        	<div class="large-12 small-12 columns">
+			        	<div class="large-6 small-12 columns">
 			        		<label>Plan</label>
-			        		<?php echo $this->Form->input('plan', array('value' => $myPdp['plan'], 'type' => 'textarea')); ?>
+			        		<p><?php echo $myPdp['plan']; ?></p>
 			        	</div>
 		        	</div>
 		        	<?php echo $this->Form->submit('Update'); ?>
@@ -63,11 +68,23 @@
 	        </div>
 	      </div>
 	    </div>
+	    <?php } ?>
 	</div>
-<?php } else if($userRole == 'mentor') { ?>
+<?php } else if($userRole === 'mentor') { ?>
+	<div class='row'>
+		<div class="large-8 small-12 columns">
+	      <div class="row">
+	        <div class="large-12 columns big-padding">
+	        	<form class="large-12 small-12 columns search-form" action="">
+	        		<input type="text" id="searchBox">
+	        		<input type="submit" value="Search">
+	        	</form>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+<?php } else if($userRole === 2) { ?>
 	
-<?php } else if($userRole == 2) { ?>
-	
-<?php } else if($userRole == 3) { ?>
+<?php } else if($userRole === 3) { ?>
 	
 <?php } ?>
