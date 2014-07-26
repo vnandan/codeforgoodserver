@@ -2,16 +2,6 @@
 
 class UsersController extends AppController {
 
-public $components = array(
-    'Auth' => array(
-        'authenticate' => array(
-            'Form' => array(
-                'fields' => array('username' => 'email')
-            )
-        )
-    )
-);
-
 public function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('add', 'logout','mentorSkill');
@@ -79,10 +69,14 @@ public function index() {
             $this->User->create();
             if ($this->User->save($this->request->data))
             {
+            	$id = $this->User->getLastInsertId();
+            	$this->request->data['User']['id'] = $id;
+            	$this->Auth->login($this->request->data['User']);
+
                 if($this->request->data['User']['role']=='mentor')
                 {
                 	$this->autoRender = false;
-                	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$this->User->getLastInsertId().'/show'));
+                	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$id.'/show'));
                 }
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));

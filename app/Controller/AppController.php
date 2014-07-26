@@ -34,11 +34,7 @@ class AppController extends Controller {
 
 	public $components=array(
         'Session',
-        'Auth'=>array(
-            'loginredirect'=>'/',
-            'logoutRedirect'=>'/',
-            'authorize'=>array('Controller')
-        ),
+        'Auth',
         'RequestHandler'
     );
     public $helpers = array('Js');
