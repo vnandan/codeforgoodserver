@@ -44,36 +44,33 @@
 	    <div id="panel2" class="dashboard-tab-content">
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
-	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns login-form">
+	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns card">
 	        		<div class="large-12 small-12 columns">
-		        		<label>Statement</label>
+		        		<label class="topic-header">Statement</label>
 		        		<p><?php echo $myPdp['Post']['statement']; ?></p>
 		        	</div>
 		        	<div class="large-12 small-12 columns">
-		        		<label>Description</label>
+		        		<label class="topic-header">Description</label>
 		        		<p><?php echo $myPdp['Post']['description']; ?></p>
 		        	</div>
 		        	
-		        	<?php
-		        	if($this->Session->read('Auth.User.role')==='mentor')
-		        	{
-		        	 echo $this->Form->create('Post'); 
-		        	 ?>
-		        	
-		        	<div class="large-12 small-12 columns">
-		        		<div class="large-6 small-12 columns">
-			        		<label>Objective</label>
-			        		<p><?php echo $myPdp['objective']; ?></p>
-			        	</div>
-			        	<div class="large-6 small-12 columns">
-			        		<label>Plan</label>
-			        		<p><?php echo $myPdp['plan']; ?></p>
-			        	</div>
+	        		<div class="large-6 small-12 columns">
+		        		<label class="topic-header">Objective</label>
+		        		<p><?php echo $myPdp['Post']['objective']; ?></p>
 		        	</div>
-		        	<?php echo $this->Form->submit('Update'); ?>
-		        	<?php echo $this->Form->end();
-		        	}
-		        	 ?>
+		        	<div class="large-6 small-12 columns">
+		        		<label class="topic-header">Plan</label>
+		        		<p><?php echo $myPdp['Post']['plan']; ?></p>
+		        	</div>
+
+		        	<?php if(count($myPdp['Post']['Meeting']) > 0) { ?>
+			        	<div class="large-12 small-12 columns">
+			        		<label class="topic-header">
+			        			Next Meeting on <?php echo $myPdp['Post']['Meeting']['time']; ?> via 
+			        			<?php echo $myPdp['Post']['Meeting']['venue']; ?>
+			        		</label>
+			        	</div>
+		        	<?php } ?>
 	        	</div>
 	        </div>
 	      </div>
@@ -83,15 +80,37 @@
 	     ?>
 	</div>
 <?php } else if($userRole === 'mentor') { ?>
+	<div class="large-12 small-12 columns dashboard-tabs">
+	      <ul class="left">
+	        <li class="active">Search Problems</li>
+	      </ul>
+	      <ul class="right">
+	        <li><a href="logout">Logout</a></li>
+	      </ul>
+	    </div>
 	<div class="clear-fix"></div>
 	<div class='row'>
 		<div class="large-8 small-12 columns">
 			<form class="	search-form" method="post" action="dashboard">
-				<span class="sub-title">Search Problems</span>
-        		<input type="text" id="searchBox">
+				<input type="text" id="searchBox">
         		<input type="submit" value="Search">
         	</form>
         	<div class="card">
+        		<?php 
+        			for($i=0; $i<count($recPosts); $i++) {
+        				?>
+        					<div class="large-12 small-12 columns">
+        						<div class="large-10 small-10 columns">
+        							<div class='post-title'><?php echo $recPosts['Post']['statement']; ?></div>
+        							<div class='post-desc'><?php echo substr($recPosts['Post']['statement'], 0, 20)."..."; ?></div>	
+        						</div>
+        						<div class="large-2 small-2 columns">
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts['Post']['id'].'"' ?>><span class="label">Yes!</span></a>
+        						</div>
+        					</div>
+        				<?php
+        			}
+        		?>
         	</div>
 	     </div>
 	     <div class="large-4 small-12 columns">
