@@ -1,5 +1,4 @@
 <?php
-
 /*
 if($this->user_role == 0) { // Mentee ?>
 =======
@@ -56,7 +55,6 @@ if($this->user_role == 0) { // Mentee ?>
 <?php }*/ ?>
 
 <?php
-
 echo $this->Form->create('Post',array('action'=>'add'));
 echo $this->Form->input('statement',array('label'=>'Statement'));
 echo $this->Form->input('description',array('label'=>'Description'));
