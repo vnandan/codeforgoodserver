@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 /*
 if($this->user_role == 0) { // Mentee ?>
 =======
