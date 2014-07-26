@@ -77,10 +77,6 @@ span {
 	color: #fff;
 }
 
-.search-form {
-
-}
-
 .search-form input[type="text"] {
 	width: 85%;
 	display: inline;
@@ -89,4 +85,9 @@ span {
 .search-form input[type="submit"] {
 	width: 10%;
 	display: inline;
+}
+
+.sub-title {
+	color: #000;	
+	margin-bottom: 15px;
 }
