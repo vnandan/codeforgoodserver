@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2014 at 08:36 PM
+-- Generation Time: Jul 26, 2014 at 10:37 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -84,9 +84,19 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 CREATE TABLE IF NOT EXISTS `skills` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `skills` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `user_id` int(7) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `name`, `user_id`) VALUES
+(6, 'dfmgldfmg', 19),
+(7, 'dkfnekf', 19),
+(8, 'ms excel', 19);
 
 -- --------------------------------------------------------
 
@@ -108,14 +118,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `mob`, `dob`, `profession`, `role`, `language`, `active`, `created`, `modified`) VALUES
-(14, 'v', 'v@v.com', 'f003ff6ff0e113eb94a977d4b1b1d023524cfd6b', 1, '2014-07-26', 'sdg', 'mentor', 'v', 0, '2014-07-26 20:31:24', '2014-07-26 20:34:51');
+(19, 'adfn', 'v@v.com', 'f9965c5cd48fecd90c241466fe25d9980703f71c', 123, '2014-07-26', 'ldfm', 'mentor', 'e', 0, '2014-07-26 22:33:02', '2014-07-26 22:33:13');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

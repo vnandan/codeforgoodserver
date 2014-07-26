@@ -57,13 +57,15 @@ public function index() {
 	 	if ($this->User->save($this->request->data))
 	 	{
 	            //$this->Session->setFlash('Info Saved!');
-	 			$wordList = $this->explode(',', $this->request->data['User']['skills']);
+	 			$wordList = explode(',', $this->request->data['User']['skills']);
 	 			$data = array();
-	 			foreach ($wordList as $Word) {
+	 			foreach ($wordList as $Word)
+	 			{
 	 				$Word = trim($Word);
 	 				$Word = stripslashes($Word);
 	 				$data[] = array('name'=>$Word,'user_id'=>$id);
 	 			}
+	 			$this->User->Skill->saveMany($data);
 
 	            return $this->redirect('/');
 	 	}
@@ -89,7 +91,7 @@ public function index() {
 
     public function dashboard()
     {
-    	
+
     }
 
 
