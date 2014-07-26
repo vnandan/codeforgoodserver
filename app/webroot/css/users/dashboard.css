@@ -1,0 +1,73 @@
+.dashboard-select-container { 
+	margin-top:25px!important
+}
+
+.dashboard-select {
+	background-color:#283B66;
+	color:white;
+	font-size:0.9em!important;
+	border:1px #283B66 solid;
+	font-family:'lato';padding:10px 15px 10px 15px
+}
+
+.dashboard-select option { 
+	font-size:1em!important
+}
+
+.dashboard-tabs { 
+	width:100%;
+	background-color:#000;
+}
+
+.dashboard-tabs ul { 
+	margin-left:0.9375em;
+	margin-right:0.9375em;
+	margin-bottom:0px;
+	padding-top:15px !important;
+	height:100% !important
+}
+
+.dashboard-tabs ul li { 
+	display:inline-block;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:10px
+}
+
+.dashboard-tabs ul li a , .dashboard-tabs ul li a:visited { 
+	color:#FFF
+}
+
+.dashboard-tabs ul li:hover,.dashboard-tabs ul .active { 
+	background-color:#f6f6f6;
+	cursor:pointer;
+	border-radius:1px
+}
+
+.dashboard-tabs ul li:hover a,.dashboard-tabs ul li.active a { 
+	color:#000 !important
+}
+
+.dashboard-tab-content { 
+	padding-left:0.9375em;
+	padding-right:0.9375em;
+}
+
+.dashboard-tab-content ul { 
+	color:#fff;
+	margin-top:2px;
+	margin-left:20px
+}
+
+.dashboard-tab-content ul li { 
+	font-size:1em
+}
+
+.padding-top { 
+	padding-top:20px
+}
+
+.table { 
+	width:100%
+}

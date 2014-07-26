@@ -1,5 +1,5 @@
 <!-- app/View/Users/add.ctp -->
-<div class="users form">
+<div class="users form box">
 <?php echo $this->Form->create('User', array("class"=>"large-6 small-10 large-offset-3 small-offset-1 login-form")); ?>
     <fieldset>
         <legend><?php echo __('Sign Up'); ?></legend>
