@@ -25,7 +25,7 @@
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
 	          <?php
-	          	echo $this->Form->create('Post');
+	          	echo $this->Form->create('Post', array("class"=>"large-6 small-8 large-offset-3 small-offset-2 login-form"));
 	          	echo $this->Form->input('statement', array('required' => true));
 		        echo $this->Form->input('description', array('type' => 'textarea', 'required' => true));
 		        echo $this->Form->submit('Post');
@@ -37,7 +37,7 @@
 	    <div id="panel2" class="dashboard-tab-content">
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
-	          
+	        	
 	        </div>
 	      </div>
 	    </div>
