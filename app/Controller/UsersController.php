@@ -47,7 +47,7 @@ public function index() {
         $this->set('users', $users);
     }
 
- public function mentorSkill($id,$status)
+ public function mentorSkill($id,$status='hide')
  {
  	$this->set('id',$id);
  	if ($status!='show')
