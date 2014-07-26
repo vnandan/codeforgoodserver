@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 26, 2014 at 10:37 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Host: localhost
+-- Generation Time: Jul 26, 2014 at 09:28 PM
+-- Server version: 5.5.36
+-- PHP Version: 5.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,84 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `team13`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `meetings`
---
-
-CREATE TABLE IF NOT EXISTS `meetings` (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
-  `posts_id` int(32) NOT NULL,
-  `time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
-CREATE TABLE IF NOT EXISTS `messages` (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
-  `posts_id` int(32) NOT NULL,
-  `sender` tinyint(1) NOT NULL,
-  `message` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `posts`
---
-
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
-  `mentee_id` int(32) NOT NULL,
-  `mentore_id` int(32) NOT NULL,
-  `statement` text NOT NULL,
-  `description` text NOT NULL,
-  `plan` text NOT NULL,
-  `objective` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE IF NOT EXISTS `roles` (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
-  `role` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skills`
---
-
-CREATE TABLE IF NOT EXISTS `skills` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `user_id` int(7) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `skills`
---
-
-INSERT INTO `skills` (`id`, `name`, `user_id`) VALUES
-(6, 'dfmgldfmg', 19),
-(7, 'dkfnekf', 19),
-(8, 'ms excel', 19);
 
 -- --------------------------------------------------------
 
@@ -118,14 +40,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `mob`, `dob`, `profession`, `role`, `language`, `active`, `created`, `modified`) VALUES
-(19, 'adfn', 'v@v.com', 'f9965c5cd48fecd90c241466fe25d9980703f71c', 123, '2014-07-26', 'ldfm', 'mentor', 'e', 0, '2014-07-26 22:33:02', '2014-07-26 22:33:13');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
