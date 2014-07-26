@@ -4,12 +4,12 @@
     <fieldset>
         <legend><?php echo __('Sign Up'); ?></legend>
         <?php
-        echo $this->Form->input('role',array('type'=>'radio','options'=>array('mentee'=>'Mentee','mentor'=>'Mentor'), 'required' => true));
+        echo $this->Form->input('role', array('type'=>'radio','options'=>array('mentee'=>'Mentee','mentor'=>'Mentor'), 'required' => true));
         echo $this->Form->input('name', array('required' => true));
         echo $this->Form->input('email', array('required' => true));
         echo $this->Form->input('password', array('required' => true));
-        echo $this->Form->input('mob',array('label'=>'Contact'));
-        echo $this->Form->input('language',array('label'=>'Preferred Language'));
+        echo $this->Form->input('mob', array('label'=>'Contact'));
+        echo $this->Form->input('language', array('label'=>'Preferred Language'));
         echo $this->Form->input('dob',array('label'=>'Date of Birth', 'class' => 'date-select', 'dateFormat' => 'DMY', 'maxYear' => date('Y')));
         echo $this->Form->submit('Sign Up');
     ?>
