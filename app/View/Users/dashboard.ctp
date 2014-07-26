@@ -1,7 +1,4 @@
 <?php
-echo $this->Session->read('Auth.User.role');
-?>
-<?php
 	$css = array('users/dashboard');
 	$js  = array('users/dashboard');
 ?>
@@ -82,9 +79,9 @@ echo $this->Session->read('Auth.User.role');
 	    <?php } ?>
 	</div>
 <?php } else if($userRole === 'mentor') { ?>
+	<div class="clear-fix"></div>
 	<div class='row'>
 		<div class="large-8 small-12 columns">
-			<div class="clear-fix"></div>
 			<form class="	search-form" method="post" action="dashboard">
 				<span class="sub-title">Search Problems</span>
         		<input type="text" id="searchBox">
@@ -95,6 +92,7 @@ echo $this->Session->read('Auth.User.role');
 	     </div>
 	     <div class="large-4 small-12 columns">
 	     	<?php 
+	     		$mentorPdp = array();
 	     		for($i=0; $i<count($mentorPdp); $i++) {
 	     			echo "<a href='/codeforgoodserver/posts/view/id/".$mentorPdp[$i]['id']."'>";
 	     			echo "<div class='large-12 small-12 columns card'>";
@@ -103,6 +101,10 @@ echo $this->Session->read('Auth.User.role');
 	     			echo "</div>";
 	     			echo "</a>";
 	     		} 
+
+	     		if(count($mentorPdp) == 0) {
+	     			echo "<span class='card sub-title'>No projects in progress</span>";
+	     		}
 	     	?>
 	     </div>
 	</div>
