@@ -6,7 +6,7 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel {
 
-public $hasMany = array('Skill');
+public $hasMany = array('Skill','Post');
 
  public function beforeSave($options = array()) {
         if (!empty($this->data[$this->alias]['password'])) {
