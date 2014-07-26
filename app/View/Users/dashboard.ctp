@@ -1,4 +1,7 @@
 <?php
+echo $this->Session->read('Auth.User.role');
+?>
+<?php
 	$css = array('users/dashboard');
 	$js  = array('users/dashboard');
 ?>
@@ -25,7 +28,7 @@
 	      <div class="row">
 	        <div class="large-12 columns big-padding">
 	          <?php
-	          	echo $this->Form->create('Post', array("class"=>"large-6 small-8 large-offset-3 small-offset-2 login-form"));
+	          	echo $this->Form->create('Post', array("class"=>"large-6 small-8 large-offset-3 small-offset-2 login-form",'controller'=>'post','action'=>'add'));
 	          	echo $this->Form->input('statement', array('required' => true));
 		        echo $this->Form->input('description', array('type' => 'textarea', 'required' => true));
 		        echo $this->Form->submit('Post');
@@ -40,13 +43,19 @@
 	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns login-form">
 	        		<div class="large-12 small-12 columns">
 		        		<label>Statement</label>
-		        		<p><?php echo $myPdp['statement']; ?></p>
+		        		<p><?php echo $myPdp['Post']['statement']; ?></p>
 		        	</div>
 		        	<div class="large-12 small-12 columns">
 		        		<label>Description</label>
-		        		<p><?php echo $myPdp['description']; ?></p>
+		        		<p><?php echo $myPdp['Post']['description']; ?></p>
 		        	</div>
-		        	<?php echo $this->Form->create('Post'); ?>
+		        	
+		        	<?php
+		        	if($this->Session->read('Auth.User.role')==='mentor')
+		        	{
+		        	 echo $this->Form->create('Post'); 
+		        	 ?>
+		        	
 		        	<div class="large-12 small-12 columns">
 		        		<div class="large-6 small-6 columns">
 			        		<label>Objective</label>
@@ -58,7 +67,9 @@
 			        	</div>
 		        	</div>
 		        	<?php echo $this->Form->submit('Update'); ?>
-		        	<?php echo $this->Form->end(); ?>
+		        	<?php echo $this->Form->end();
+		        	}
+		        	 ?>
 	        	</div>
 	        </div>
 	      </div>

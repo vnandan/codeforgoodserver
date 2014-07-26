@@ -11,7 +11,7 @@ class PostsController extends AppController {
     	 if ($this->request->is('post'))
         {
             $this->Post->create();
-            $this->request->data['Post']['mentee_id'] = $this->Session->read('Auth.User.id');
+            $this->request->data['Post']['user_id'] = $this->Session->read('Auth.User.id');
             if ($this->Post->save($this->request->data))
             {
             	$this->Session->setFlash(__('Question created!'));
