@@ -83,17 +83,34 @@
 	     ?>
 	</div>
 <?php } else if($userRole === 'mentor') { ?>
+	<div class="clear-fix"></div>
 	<div class='row'>
 		<div class="large-8 small-12 columns">
-	      <div class="row">
-	        <div class="large-12 columns big-padding">
-	        	<form class="large-12 small-12 columns search-form" action="">
-	        		<input type="text" id="searchBox">
-	        		<input type="submit" value="Search">
-	        	</form>
-	        </div>
-	      </div>
-	    </div>
+			<form class="	search-form" method="post" action="dashboard">
+				<span class="sub-title">Search Problems</span>
+        		<input type="text" id="searchBox">
+        		<input type="submit" value="Search">
+        	</form>
+        	<div class="card">
+        	</div>
+	     </div>
+	     <div class="large-4 small-12 columns">
+	     	<?php 
+	     		$mentorPdp = array();
+	     		for($i=0; $i<count($mentorPdp); $i++) {
+	     			echo "<a href='/codeforgoodserver/posts/view/id/".$mentorPdp[$i]['id']."'>";
+	     			echo "<div class='large-12 small-12 columns card'>";
+	     			echo "<div>".$mentorPdp[$i]['User']['name']."</div>";
+	     			echo "<div>".substr($mentorPdp[$i]['User']['statement'], 0, 20).'...'."</div>";
+	     			echo "</div>";
+	     			echo "</a>";
+	     		} 
+
+	     		if(count($mentorPdp) == 0) {
+	     			echo "<span class='card sub-title'>No projects in progress</span>";
+	     		}
+	     	?>
+	     </div>
 	</div>
 <?php } else if($userRole === 2) { ?>
 	

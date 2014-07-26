@@ -81,10 +81,27 @@ form .date-select {
 	margin-top: 25px;
 }
 
+.card {
+	padding: 10px;
+	box-shadow: 0 2px 4px #aaa;
+	color: #000;
+	display: block;
+	background: #fff;
+}
+
+.card a {
+	color: #000;
+}
+
 .big-padding {
 	padding: 20px;
 }
 
 form textarea {
 	resize: none;
+}
+
+.clear-fix {
+	padding: 10px;
+	width: 100%;
 }
