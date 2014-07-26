@@ -62,3 +62,14 @@ form .date-select {
 .sub-title {
 	font-size: 1.2em;
 }
+
+.message {
+	background: #F9EDBE;
+	border: solid 1px #F0C36D;
+	border-radius: 5px;
+	width: 500px;
+	text-align: center;
+	padding: 10px;
+	display: block;
+	margin: 20px auto;
+}
