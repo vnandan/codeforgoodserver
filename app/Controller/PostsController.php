@@ -140,6 +140,26 @@ class PostsController extends AppController {
         echo $this->redirect('/users/dashboard');  
     }
 
+    public function complete($postId)
+    {
+     if($postId==null)
+        {
+         $this->Session->setFlash(__('Illegal Id value. Where you going?'));   
+        }
+        else
+        {
+            $this->Post->id = $postId;
+            $this->request->data['Post']['complete'] = 1;
+            if($this->Post->save($this->request->data)
+            {
+                $this->Session->setFlash(__('PDP was successfully completed! Congratulations'));
+                echo $this->redirect('/users/dashboard');                  
+            }
+        } 
+
+        echo $this->redirect('/users/dashboard');  
+    }
+
 
 }
 
