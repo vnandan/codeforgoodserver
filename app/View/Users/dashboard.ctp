@@ -69,8 +69,8 @@
 		        	<?php if(count($myPdp['Meeting']) > 0) { ?>
 			        	<div class="large-12 small-12 columns">
 			        		<label class="topic-header">
-			        			Next Meeting on <?php echo $myPdp['Meeting']['time']; ?> via 
-			        			<?php echo $myPdp['Meeting']['venue']; ?>
+			        			Next Meeting on <?php echo $myPdp['Meeting'][count($myPdp['Meeting'])-1]['time']; ?> via 
+			        			<?php echo $myPdp['Meeting'][count($myPdp['Meeting'])-1]['venue']; ?>
 			        		</label>
 			        	</div>
 		        	<?php } ?>
