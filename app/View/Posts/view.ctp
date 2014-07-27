@@ -19,6 +19,7 @@
 	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns card">
 	        		<div class="large-12 small-12 columns">
 	        			<button id="dropButton" <?php echo 'postid="'.$myPdp['Post']['id'].'"' ?> class="button tiny alert right">Drop</button>
+	        			<button id="completeButton" <?php echo 'postid="'.$myPdp['Post']['id'].'"' ?> class="button tiny success right">Complete</button>
 	        		</div>
 	        		<div class="large-12 small-12 columns">
 		        		<label class="topic-header">Statement</label>
@@ -46,6 +47,10 @@
 				        		</label>
 				        	</div>
 			        	<?php } ?>
+			        </div>
+
+			        <div class="large-12 small-12 columns">
+			        	<label class="topic-header">Duration : 3 months</label>
 			        </div>
 
 			        <div class="row">

@@ -11,6 +11,14 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#completeButton').click(function(e){
+		var postid = $(this).attr('postid');
+		var result = confirm('Are you sure you want to complete this post ?');
+		if(result == true) {
+			window.location.href = '/codeforgoodserver/posts/complete/'+postid;
+		}
+	});
+
 	$('#submitChat').click(function(e){
 		e.preventDefault();
 		var text = $('#chatMessage').val();
