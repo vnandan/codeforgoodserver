@@ -63,11 +63,11 @@
 		        		<p><?php echo $myPdp['Post']['plan']; ?></p>
 		        	</div>
 
-		        	<?php if(count($myPdp['Post']['Meeting']) > 0) { ?>
+		        	<?php if(count($myPdp['Meeting']) > 0) { ?>
 			        	<div class="large-12 small-12 columns">
 			        		<label class="topic-header">
-			        			Next Meeting on <?php echo $myPdp['Post']['Meeting']['time']; ?> via 
-			        			<?php echo $myPdp['Post']['Meeting']['venue']; ?>
+			        			Next Meeting on <?php echo $myPdp['Meeting']['time']; ?> via 
+			        			<?php echo $myPdp['Meeting']['venue']; ?>
 			        		</label>
 			        	</div>
 		        	<?php } ?>
@@ -105,7 +105,7 @@
         							<div class='post-desc'><?php echo substr($recPosts[$i]['p']['description'], 0, 20)."..."; ?></div>	
         						</div>
         						<div class="large-2 small-2 columns">
-        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="label">Yes!</span></a>
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="button primary">Yes!</span></a>
         						</div>
         					</div>
         				<?php
