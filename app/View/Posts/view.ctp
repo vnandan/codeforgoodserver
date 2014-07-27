@@ -34,15 +34,31 @@
 
 		        	<div class="large-12 small-12 columns">
 			        	<a <?php echo 'href="../createMeeting/'.$myPdp['Post']['id'].'"' ?>><label>Next Meeting</label></a>
-			        	
 			        	<?php if(count($myPdp['Meeting']) > 0) { ?>
 				        	<div class="large-12 small-12 columns">
 				        		<label class="topic-header">
-				        			Next Meeting on <?php echo $myPdp['Meeting']['time']; ?> at 
+				        			Next Meeting on <?php echo $myPdp['Meeting']['time']; ?> via 
 				        			<?php echo $myPdp['Meeting']['venue']; ?>
 				        		</label>
 				        	</div>
 			        	<?php } ?>
+			        </div>
+
+			        <div class="large-12 small-12 columns">
+			        	<?php
+			        		$user_id = $this->Session->read('Auth.User.id');
+			        		foreach($messages as $msg) {
+			        			echo "<div class='row'>";
+			        			if($msg['Message']['user_id'] == $user_id) {
+			        				echo "<div class='large-10 small-10 large-offset-2 small-offset-2 columns'>"
+			        			} else {
+			        				echo "<div class='large-10 small-10 columns'>"
+			        			}
+			        			echo $msg['Message']['user_id'];
+			        			echo "</div>";
+			        			echo "</div>";
+			        		}
+			        	?>
 			        </div>
 	        	</div>
 	        </div>

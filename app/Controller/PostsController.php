@@ -70,6 +70,7 @@ class PostsController extends AppController {
     	{
     		$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$id)));
     		$this->set('myPdp',$result);
+            $this->set('messages', $this->Post->Message->getMessages($id));
     	}
     }
 
