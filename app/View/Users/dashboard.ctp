@@ -120,7 +120,7 @@
 	     	<?php 
 	     		// debug($myMentees);
 	     		for($i=0; $i<count($myMentees); $i++) {
-	     			echo "<a href='/codeforgoodserver/posts/view/id/".$myMentees[$i]['Post']['id']."'>";
+	     			echo "<a href='/codeforgoodserver/posts/view/".$myMentees[$i]['Post']['id']."'>";
 	     			echo "<div class='large-12 small-12 columns card'>";
 	     			echo "<div>".$myMentees[$i]['User']['name']."</div>";
 	     			echo "<div>".substr($myMentees[$i]['Post']['statement'], 0, 20).'...'."</div>";

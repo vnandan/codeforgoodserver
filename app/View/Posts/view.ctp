@@ -48,17 +48,23 @@
 			        	<?php
 			        		$user_id = $this->Session->read('Auth.User.id');
 			        		foreach($messages as $msg) {
-			        			echo "<div class='row'>";
+			        			echo "<div class='row '>";
 			        			if($msg['Message']['user_id'] == $user_id) {
-			        				echo "<div class='large-10 small-10 large-offset-2 small-offset-2 columns'>"
+			        				echo "<div class='large-10 small-10 large-offset-2 small-offset-2 columns chat-message'>";
 			        			} else {
-			        				echo "<div class='large-10 small-10 columns'>"
+			        				echo "<div class='large-10 small-10 columns chat-message'>";
 			        			}
-			        			echo $msg['Message']['user_id'];
+			        			echo $msg['Message']['message'];
 			        			echo "</div>";
 			        			echo "</div>";
 			        		}
 			        	?>
+			        	<form id="form1" method="post" action="/codeforgoodserver/messages/add">
+			        		<input type="text" name="message">
+			        		<input type="hidden" name="postId" <?php echo 'value="'.$myPdp['Post']['id'].'"'; ?>>
+			        		<input type="hidden" name="from" value="0">
+			        		<input type="submit" value="Send">
+			        	</form>
 			        </div>
 	        	</div>
 	        </div>

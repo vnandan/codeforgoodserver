@@ -105,7 +105,7 @@ public function index() {
     	if($this->Session->read('Auth.User.role')=='mentor')
     	{
     		$this->recursive =2;
-    		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
+    		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.active' => 1, 'Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
 
     		if($this->request->is('post'))
     	{
