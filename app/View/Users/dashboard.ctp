@@ -74,6 +74,32 @@
 			        		</label>
 			        	</div>
 		        	<?php } ?>
+
+		        	<div class="row">
+					    <div class="large-12 small-12 columns">
+				        	<?php
+				        		$user_id = $this->Session->read('Auth.User.id');
+				        		foreach($messages as $msg) {
+				        			echo "<div class='large-12 small-12 columns'>";
+				        			if($msg['Message']['user_id'] == $user_id) {
+				        				echo "<div class='large-8 small-8 large-offset-4 small-offset-4 columns chat-message right-text'>";
+				        			} else {
+				        				echo "<div class='large-8 small-8 columns chat-message left-text'>";
+				        			}
+				        			echo $msg['Message']['message'];
+				        			echo "</div>";
+				        			echo "</div>";
+				        		}
+				        	?>
+				        	<div class='clear-fix'></div><br/>
+				        	<form id="form1">
+				        		<input type="text" id="chatMessage" name="message">
+				        		<input type="hidden" id="postId" <?php echo 'value="'.$myPdp['Post']['id'].'"'; ?>>
+				        		<input type="hidden" name="from" value="1">
+				        		<input type="submit" id="submitChat" value="Send">
+				        	</form>
+				        </div>
+				    </div>
 	        	</div>
 	        </div>
 	      </div>

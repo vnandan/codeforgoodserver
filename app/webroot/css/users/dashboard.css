@@ -108,3 +108,7 @@ span {
 .margin {
 	margin: 5px 0;
 }
+
+form {
+	box-shadow: none;
+}

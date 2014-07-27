@@ -22,10 +22,10 @@ class MessagesController extends AppController {
 
     		if($this->Message->save($this->request->data))
     		{
-                if($from == 1)
-    			 echo $this->redirect('/users/dashboard');
-                else 
-                    echo $this->redirect('/posts/view'.$postId);
+        //         if($from == 1)
+    			 // echo $this->redirect('/users/dashboard');
+        //         else 
+        //             echo $this->redirect('/posts/view'.$postId);
 
     		}
     	}
