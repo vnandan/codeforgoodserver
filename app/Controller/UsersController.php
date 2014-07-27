@@ -99,13 +99,15 @@ public function index() {
     	$this->set('userRole',$this->Session->read('Auth.User.role'));
     	if($this->Session->read('Auth.User.role')=='mentee')
     	{
+        $post = $this->User->Post->find('first',array('conditions'=>array('Post.active'=>1,'Post.user_id'=>$this->Session->read('Auth.User.id'))));
     	$this->set('myPdp',$this->User->Post->find('first',array('conditions'=>array('Post.active'=>1,'Post.user_id'=>$this->Session->read('Auth.User.id')))));
+        $this->set('messages',$this->User->Post->Message->find('all',array('conditions'=>array('post_id'=>$post['Post']['id']),'limit'=>10)));
     	}
     	else
     	if($this->Session->read('Auth.User.role')=='mentor')
     	{
     		$this->recursive =2;
-    		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
+    		$this->set('myMentees',$this->User->Post->find('all',array('conditions'=>array('Post.active' => 1, 'Post.mentor_id'=>$this->Session->read('Auth.User.id')))));
 
     		if($this->request->is('post'))
     	{

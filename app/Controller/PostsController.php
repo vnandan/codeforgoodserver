@@ -68,8 +68,13 @@ class PostsController extends AppController {
     	}
     	else
     	{
-    		$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$id)));
+    		$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$id, 'Post.active' => 1)));
+            if(count($result) == 0) {
+                echo $this->redirect('/users/dashboard');
+            }
+
     		$this->set('myPdp',$result);
+            $this->set('messages',$this->Post->Message->find('all',array('conditions'=>array('post_id'=>$id),'limit'=>10)));
     	}
     }
 
@@ -81,38 +86,41 @@ class PostsController extends AppController {
     		$this->Session->setFlash(__('Illegal Id value. Where you going?'));
     		echo $this->redirect('/users/dashboard');
     	}
-    	$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$postId)));
+    	$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$postId, 'Post.active'=> 1)));
     	if($result['Post']['mentor_id']==0)
     	{
     		$this->Post->id = $postId;
     		$this->request->data['Post']['mentor_id'] = $this->Session->read('Auth.User.id');
-    		if($this->Post->save($this->request->data))
-    		{
+    		if($this->Post->save($this->request->data)) {
     			$this->Session->setFlash(__('Congratulations! You have a new mentee.'));
     			echo $this->redirect('/posts/view/'.$postId);
     		}
-
+            else {
+                echo $this->redirect('/users/dashboard');
+            }
     	}
-
     }
 
     public function createMeeting($postId=null)
     {
-        if($postId==null)
-        {
-         $this->Session->setFlash(__('Illegal Id value. Where you going?'));
-         echo $this->redirect('/users/dashboard');   
-        }
-        else
-        {
-            $this->set('postId',$postId);
-            $this->Post->Meeting->create();
-            if($this->Post->Meeting->save($this->request->data))
+        $this->set('postId',$postId);
+        if($this->request->is('post')) {
+            if($postId==null)
             {
-                $this->Session->setFlash(__('Next Meeting has been scheduled.'));
-                echo $this->redirect('/posts/view/'.$postId);
+             $this->Session->setFlash(__('Illegal Id value. Where you going?'));
+             echo $this->redirect('/users/dashboard');   
             }
+            else
+            {
+                $this->Post->Meeting->create();
+                $this->request->data['Meeting']['post_id'] = $postId;
+                if($this->Post->Meeting->save($this->request->data))
+                {
+                    $this->Session->setFlash(__('Next Meeting has been scheduled.'));
+                    echo $this->redirect('/posts/view/'.$postId);
+                }
 
+            }
         }
     }
 
@@ -120,21 +128,16 @@ class PostsController extends AppController {
     {
      if($postId==null)
         {
-         $this->Session->setFlash(__('Illegal Id value. Where you going?'));
-         echo $this->redirect('/users/dashboard');   
+         $this->Session->setFlash(__('Illegal Id value. Where you going?'));   
         }
         else
         {
-            $this->Post->Meeting->create();
-            $this->Post->Meeting->id = $postId;
-            $this->request->data['Post']['Meeting']['active'] = 1;
+            $this->Post->id = $postId;
+            $this->request->data['Post']['active'] = 0;
+            $this->Post->save($this->request->data);
+        } 
 
-            if($this->Post->Meeting->save($this->request->data))
-            {
-                $this->Session->setFlash(__('Next Meeting Schedule'));
-                echo $this->redirect('/posts/view/'.$postId);   
-            }
-        }   
+        echo $this->redirect('/users/dashboard');  
     }
 
 

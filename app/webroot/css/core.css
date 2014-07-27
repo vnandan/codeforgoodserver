@@ -1,3 +1,4 @@
+
 @font-face {
 	src: url('rlight.ttf');
 	font-family: 'rlight';
@@ -105,4 +106,23 @@ textarea {
 .clear-fix {
 	padding: 10px;
 	width: 100%;
+}
+
+.chat-message {
+	border-radius: 5px;
+	background: #fff;
+	border: solid 1px #aaa;
+	box-shadow: 0 1px 1px #aaa;
+	margin: 2px;
+	padding: 5px;
+}
+
+.right-text {
+	text-align: right;
+	background: #a7d8b6;
+}
+
+.left-text {
+	text-align: left;
+	background: #bcbce4;
 }
