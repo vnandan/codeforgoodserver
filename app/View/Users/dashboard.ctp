@@ -69,8 +69,8 @@
 		        	<?php if(count($myPdp['Meeting']) > 0) { ?>
 			        	<div class="large-12 small-12 columns">
 			        		<label class="topic-header">
-			        			Next Meeting on <?php echo $myPdp['Meeting']['time']; ?> via 
-			        			<?php echo $myPdp['Meeting']['venue']; ?>
+			        			Next Meeting on <?php echo $myPdp['Meeting'][count($myPdp['Meeting'])-1]['time']; ?> via 
+			        			<?php echo $myPdp['Meeting'][count($myPdp['Meeting'])-1]['venue']; ?>
 			        		</label>
 			        	</div>
 		        	<?php } ?>
@@ -126,15 +126,27 @@
         	</form>
         	<div>
         		<?php 
+
+        			$index = '';
+        			if(count($recPosts) > 0) {
+        				if(isset($recPosts[0]['p'])) {
+        					$index = 'p';
+        				} else {
+        					$index = 'posts';
+        				}
+        			} else {
+        				return;
+        			}
+
         			for($i=0; $i<count($recPosts); $i++) {
         				?>
         					<div class="large-12 small-12 columns card margin">
         						<div class="large-10 small-10 columns">
-        							<div class='post-title'><?php echo $recPosts[$i]['p']['statement']; ?></div>
-        							<div class='post-desc'><?php echo substr($recPosts[$i]['p']['description'], 0, 20)."..."; ?></div>	
+        							<div class='post-title'><?php echo $recPosts[$i][$index]['statement']; ?></div>
+        							<div class='post-desc'><?php echo substr($recPosts[$i][$index]['description'], 0, 20)."..."; ?></div>	
         						</div>
         						<div class="large-2 small-2 columns">
-        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="button primary small">Yes!</span></a>
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i][$index]['id'].'"' ?>><span class="button primary small">Yes!</span></a>
         						</div>
         					</div>
         				<?php
