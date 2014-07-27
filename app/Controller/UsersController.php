@@ -59,7 +59,7 @@ public function index() {
 	 			}
 	 			$this->User->Skill->saveMany($data);
 
-	            return $this->redirect('/users/dashboard');
+	            echo $this->redirect('/users/dashboard');
 	 	}
  	}
 }
@@ -81,11 +81,11 @@ public function index() {
                 if($this->request->data['User']['role']=='mentor')
                 {
                 	$this->autoRender = false;
-                	$this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$id.'/show'));
+                	return $this->redirect(array('controller'=>'Users','action'=>'mentorSkill/'.$id.'/show'));
                 }
                 else
                 {
-                	$this->redirect('/users/dashboard');
+                	return $this->redirect('/users/dashboard');
                 }	
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
