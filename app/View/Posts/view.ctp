@@ -32,7 +32,7 @@
 		        		<?php echo $this->Form->input('plan', array('type' => 'textarea', 'value' => $myPdp['Post']['objective'])); ?>
 		        	</div>
 
-		        	<div class="large-12	 small-12 columns">
+		        	<div class="large-12 small-12 columns">
 			        	<a <?php echo 'href="../createMeeting/'.$myPdp['Post']['id'].'"' ?>><label>Next Meeting</label></a>
 			        	<?php if(count($myPdp['Meeting']) > 0) { ?>
 				        	<div class="large-12 small-12 columns">

@@ -46,6 +46,9 @@
 	        <div class="large-12 columns big-padding">
 	        	<div class="large-6 small-8 large-offset-3 small-offset-2 columns card">
 	        		<div class="large-12 small-12 columns">
+	        			<button id="dropButton" <?php echo 'postid="'.$myPdp['Post']['id'].'"' ?> class="button tiny alert right">Drop</button>
+	        		</div>
+	        		<div class="large-12 small-12 columns">
 		        		<label class="topic-header">Statement</label>
 		        		<p><?php echo $myPdp['Post']['statement']; ?></p>
 		        	</div>
@@ -105,7 +108,7 @@
         							<div class='post-desc'><?php echo substr($recPosts[$i]['p']['description'], 0, 20)."..."; ?></div>	
         						</div>
         						<div class="large-2 small-2 columns">
-        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="button primary">Yes!</span></a>
+        							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i]['p']['id'].'"' ?>><span class="button primary small">Yes!</span></a>
         						</div>
         					</div>
         				<?php
@@ -115,17 +118,17 @@
 	     </div>
 	     <div class="large-4 small-12 columns">
 	     	<?php 
-	     		$mentorPdp = array();
-	     		for($i=0; $i<count($mentorPdp); $i++) {
-	     			echo "<a href='/codeforgoodserver/posts/view/id/".$mentorPdp[$i]['id']."'>";
+	     		// debug($myMentees);
+	     		for($i=0; $i<count($myMentees); $i++) {
+	     			echo "<a href='/codeforgoodserver/posts/view/id/".$myMentees[$i]['Post']['id']."'>";
 	     			echo "<div class='large-12 small-12 columns card'>";
-	     			echo "<div>".$mentorPdp[$i]['User']['name']."</div>";
-	     			echo "<div>".substr($mentorPdp[$i]['User']['statement'], 0, 20).'...'."</div>";
+	     			echo "<div>".$myMentees[$i]['User']['name']."</div>";
+	     			echo "<div>".substr($myMentees[$i]['Post']['statement'], 0, 20).'...'."</div>";
 	     			echo "</div>";
 	     			echo "</a>";
 	     		} 
 
-	     		if(count($mentorPdp) == 0) {
+	     		if(count($myMentees) == 0) {
 	     			echo "<span class='card sub-title'>No projects in progress</span>";
 	     		}
 	     	?>
