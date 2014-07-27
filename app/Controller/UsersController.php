@@ -59,7 +59,7 @@ public function index() {
 	 			}
 	 			$this->User->Skill->saveMany($data);
 
-	            return $this->redirect('/');
+	            return $this->redirect('/users/dashboard');
 	 	}
  	}
 }

@@ -142,8 +142,8 @@
         				?>
         					<div class="large-12 small-12 columns card margin">
         						<div class="large-10 small-10 columns">
-        							<div class='post-title'><?php echo $recPosts[$i][$index]['statement']; ?></div>
-        							<div class='post-desc'><?php echo substr($recPosts[$i][$index]['description'], 0, 20)."..."; ?></div>	
+        							<p class='post-title'><?php echo $recPosts[$i][$index]['statement']; ?></p>
+        							<p class='post-desc'><?php echo substr($recPosts[$i][$index]['description'], 0, 20)."..."; ?></p>
         						</div>
         						<div class="large-2 small-2 columns">
         							<a <?php echo 'href="/codeforgoodserver/posts/acceptMentee/'.$recPosts[$i][$index]['id'].'"' ?>><span class="button primary small">Yes!</span></a>
