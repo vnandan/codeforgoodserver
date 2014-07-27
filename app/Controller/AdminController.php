@@ -3,12 +3,16 @@
 
 class AdminController extends AppController 
 {
-    public $layout = 'cakephp';
+    
     public $uses = array('Post');
-    var $scaffold;
-    	
-    public function beforeFilter()
+    
+    public function index()
     {
-        parent::beforeFilter();
-        //$this->Auth->allow();
+    	$query="select count(*) from posts";
+    	$result = $this->Post->query($query);
+
+    	$this->set('postCount',$result[0][0]['count(*)']);
+
     }
+
+ }

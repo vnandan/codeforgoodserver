@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2014 at 07:39 AM
+-- Generation Time: Jul 27, 2014 at 10:57 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -19,6 +19,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `team13`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -103,7 +113,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `description` text NOT NULL,
   `plan` text NOT NULL,
   `objective` text NOT NULL,
+  `duration` varchar(20) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
+  `complete` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -113,8 +125,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `mentor_id`, `statement`, `description`, `plan`, `objective`, `active`, `created`, `modified`) VALUES
-(40, 3, 4, 'group discussion', 'excel', '', '', 1, '2014-07-27 06:35:27', '2014-07-27 06:35:34');
+INSERT INTO `posts` (`id`, `user_id`, `mentor_id`, `statement`, `description`, `plan`, `objective`, `duration`, `active`, `complete`, `created`, `modified`) VALUES
+(40, 3, 4, 'group discussion', 'excel', '', '', '', 1, 0, '2014-07-27 06:35:27', '2014-07-27 06:35:34');
 
 -- --------------------------------------------------------
 
@@ -219,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `name` varchar(50) NOT NULL,
   `user_id` int(7) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `skills`
@@ -229,7 +241,8 @@ INSERT INTO `skills` (`id`, `name`, `user_id`) VALUES
 (1, 'dkgm', 1),
 (2, 'dfmkd', 1),
 (3, 'excel', 4),
-(4, 'discussion', 4);
+(4, 'discussion', 4),
+(5, 'q', 5);
 
 -- --------------------------------------------------------
 
@@ -252,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
@@ -260,7 +273,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `mob`, `dob`, `profession`, `role`, `language`, `active`, `created`, `modified`) VALUES
 (3, 'v', 'v@v.com', 'f2bc79ae5952f8251bb32953fbea4b50c1915a7e9d4d257275facbcf4137955b', 2, '2014-07-27', '', 'mentee', 'e', 0, '2014-07-27 01:10:09', '2014-07-27 01:10:09'),
-(4, 'v', 'v1@v1.com', 'dd9fa0f37c2e626b4701b0318ab94ab24bb8d441cebcdfa4a38b2b403d7af02d', 13245, '2014-07-27', 'dfj', 'mentor', '0', 0, '2014-07-27 04:00:56', '2014-07-27 04:01:07');
+(4, 'v', 'v1@v1.com', 'dd9fa0f37c2e626b4701b0318ab94ab24bb8d441cebcdfa4a38b2b403d7af02d', 13245, '2014-07-27', 'dfj', 'mentor', '0', 0, '2014-07-27 04:00:56', '2014-07-27 04:01:07'),
+(5, 'q', 'q@q.com', '5b09ccc1fb6d18898c98fbff74166685b081f9a3389602e37341200405fc6a36', 1, '2014-07-27', 'q', 'mentor', '1', 0, '2014-07-27 10:13:13', '2014-07-27 10:13:18');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
