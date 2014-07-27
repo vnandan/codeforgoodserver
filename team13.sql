@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2014 at 04:26 AM
+-- Generation Time: Jul 27, 2014 at 07:39 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `keywords` (
   `word` varchar(40) NOT NULL,
   `post_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `keywords`
@@ -41,7 +41,9 @@ INSERT INTO `keywords` (`id`, `word`, `post_id`) VALUES
 (8, 'excel', 37),
 (9, 'discussion', 37),
 (10, 'excel', 39),
-(11, 'ms', 39);
+(11, 'ms', 39),
+(12, 'discussion', 40),
+(13, 'excel', 40);
 
 -- --------------------------------------------------------
 
@@ -51,10 +53,20 @@ INSERT INTO `keywords` (`id`, `word`, `post_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `meetings` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
-  `posts_id` int(32) NOT NULL,
+  `post_id` int(32) NOT NULL,
   `time` datetime NOT NULL,
+  `venue` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `meetings`
+--
+
+INSERT INTO `meetings` (`id`, `post_id`, `time`, `venue`) VALUES
+(4, 37, '0000-00-00 00:00:00', ''),
+(5, 37, '0000-00-00 00:00:00', ''),
+(6, 0, '2014-07-27 06:36:00', 'FB');
 
 -- --------------------------------------------------------
 
@@ -65,10 +77,17 @@ CREATE TABLE IF NOT EXISTS `meetings` (
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
   `post_id` int(10) NOT NULL,
-  `sender` tinyint(1) NOT NULL,
+  `user_id` int(7) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `post_id`, `user_id`, `message`) VALUES
+(1, 40, 4, 'hello');
 
 -- --------------------------------------------------------
 
@@ -88,16 +107,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `mentor_id`, `statement`, `description`, `plan`, `objective`, `active`, `created`, `modified`) VALUES
-(37, 3, 0, 'group excel', 'discussion', '', '', 1, '2014-07-27 04:00:09', '2014-07-27 04:00:09'),
-(38, 3, 0, 'excel', 'ms group powerpoint', '', '', 1, '2014-07-27 04:09:59', '2014-07-27 04:09:59'),
-(39, 3, 0, 'excel', 'ms group powerpoint', '', '', 1, '2014-07-27 04:10:22', '2014-07-27 04:10:22');
+(40, 3, 4, 'group discussion', 'excel', '', '', 1, '2014-07-27 06:35:27', '2014-07-27 06:35:34');
 
 -- --------------------------------------------------------
 
