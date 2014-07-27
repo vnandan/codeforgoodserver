@@ -92,7 +92,7 @@
 	<div class='row'>
 		<div class="large-8 small-12 columns">
 			<form class="	search-form" method="post" action="dashboard">
-				<input type="text" id="searchBox">
+				<input type="text" id="searchBox" name="search">
         		<input type="submit" value="Search">
         	</form>
         	<div>

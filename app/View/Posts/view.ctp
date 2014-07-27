@@ -36,7 +36,7 @@
 	        	</div>
 
 	        	<div class="large-12 small-12 columns">
-	        		<label class="topic-header"><a href="">Next Meeting</a></label>
+	        		<label class="topic-header"><a <?php echo 'href="createMeeting/'.$myPdp['Post']['id'].'"' ?>>Next Meeting</a></label>
 	        		<?php if(count($myPdp['Post']['Meeting']) > 0) { ?>
 		        		<label class="topic-header">
 		        			On <?php echo $myPdp['Post']['Meeting']['time']; ?> via 
