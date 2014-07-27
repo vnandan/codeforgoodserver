@@ -37,6 +37,7 @@ class AppController extends Controller {
     	'Session',
     	'RequestHandler',
     'Auth' => array(
+    	'loginRedirect'=>'/users/dashboard',
         'authenticate' => array(
             'Form' => array(
             	'fields'=>array('username'=>'email'),
