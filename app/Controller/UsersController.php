@@ -121,7 +121,7 @@ public function index() {
     	}
     	else
     	{
-    	$query = "select count(*),post_id,p.* from keywords as k inner join posts as p on k.post_id =p.id  where k.word in (select name from skills where user_id = ".$this->Session->read('Auth.User.id').") AND p.mentor_id = null AND p.complete=0 AND p.active=1 group by k.post_id order by count(*) Desc LIMIT 10";
+    	$query = "select count(*),post_id,p.* from keywords as k inner join posts as p on k.post_id =p.id  where k.word in (select name from skills where user_id = ".$this->Session->read('Auth.User.id').") AND p.mentor_id = 0 AND p.complete=0 AND p.active=1 group by k.post_id order by count(*) Desc LIMIT 10";
             	$result = $this->User->query($query);
             	$this->set('recPosts',$result);
         }
