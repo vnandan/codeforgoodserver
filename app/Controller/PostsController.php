@@ -150,14 +150,14 @@ class PostsController extends AppController {
         {
             $this->Post->id = $postId;
             $this->request->data['Post']['complete'] = 1;
-            if($this->Post->save($this->request->data)
+            if($this->Post->save($this->request->data))
             {
                 $this->Session->setFlash(__('PDP was successfully completed! Congratulations'));
                 echo $this->redirect('/users/dashboard');                  
             }
         } 
 
-        echo $this->redirect('/users/dashboard');  
+        echo $this->redirect('/users/dashboard');
     }
 
 
