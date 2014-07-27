@@ -9,8 +9,8 @@
         <?php
         echo $this->Form->input('role', array('type'=>'radio','options'=>array('mentee'=>'Mentee','mentor'=>'Mentor'), 'required' => true));
         echo $this->Form->input('name', array('required' => true));
-        echo $this->Form->input('email', array('required' => true,'value'=>$enteredEmail));
-        echo $this->Form->input('password', array('required' => true,'value'=>$enteredPassword));
+        echo $this->Form->input('email', array('required' => true));
+        echo $this->Form->input('password', array('required' => true));
         echo $this->Form->input('mob', array('label'=>'Contact'));
         echo $this->Form->input('language', array('options' => $languages, 'label' => 'Preferred Language'));
         echo $this->Form->input('dob',array('label'=>'Date of Birth', 'class' => 'date-select', 'dateFormat' => 'DMY', 'maxYear' => date('Y'), 'minYear' => 1900));
