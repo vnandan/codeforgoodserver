@@ -1,6 +1,6 @@
 <?php
 	$css = array('users/dashboard');
-	$js  = array('users/dashboard');
+	$js  = array('users/dashboard','cam/camChat');
 ?>
 
 <!-- CSS Includes -->
@@ -9,6 +9,81 @@
 <!-- JS Includes -->
 <?php //echo $this->Html->script($js, array('block' => 'layout_scripts')); ?>
 <?php echo $this->Html->script($js); ?>
+
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+	     $('#graph').hide();
+	     $('#close').hide();
+	});
+
+</script>
+<div class="large-12 small-12 columns">
+<button id="close" style="" >close</button>
+<a href="#" id="camChat" >Cam Chat</a>
+</div>
+<script>
+
+
+    $('#camChat').click(function(){
+    	var randomLink = linkGenerate();
+    	//$('<iframe />').attr('src',randomLink).appentTo('body');
+    	$('#close').show();
+    	$('#graph').attr('src', randomLink);
+    	$('#graph').show();
+    	$("#graph").css({"background-color": "white"});
+        var newwindow=window.open(randomLink,'','height=200,width=150');
+        if (window.focus) {
+        	newwindow.focus()
+        	console.log("done");
+        }
+        return false;
+    
+});
+
+    $('#close').click(function(){
+    	//var randomLink = linkGenerate();
+    	//$('<iframe />').attr('src',randomLink).appentTo('body');
+    	
+    	$('#graph').attr('src', "");
+    	$('#graph').hide();
+    	$('close').hide();
+    	$("#graph").css({"position":"fixed", "bottom":"0","right":"0","background-color": "white"});
+        //var newwindow=window.open(randomLink,'','height=200,width=150');
+        /*if (window.focus) {
+        	newwindow.focus()
+        	console.log("done");*/
+        });
+        //return false;
+    
+        function linkGenerate() {
+        // predefine the alphabet used.
+        alert("hello");
+        var alphabet = 'zxcvbnmlpokjiuhgytfdreswaq1234';
+ 
+        // set the length of the room name
+        var roomNameLength = 30;
+ 
+        // initialize the room name as an empty string
+        var roomName = '';
+ 
+        // repeat this 30 times
+        for (var i=0; i<roomNameLength; i++) {
+          // get a random character from the alphabet
+          var character = alphabet[Math.round(Math.random()*(alphabet.length-1))];
+ 
+          // add the character to the roomName
+          roomName = roomName + character;
+        }
+ 
+        // pre- and append appear.in URL elements
+        roomName = 'https://appear.in/' + roomName + 'lite';
+ 		console.log(roomName);
+        // return the result
+        return roomName;
+      }
+
+</script> 
 
 <?php if($userRole === 'mentee')
 {
