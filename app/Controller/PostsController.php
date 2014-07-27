@@ -105,7 +105,7 @@ class PostsController extends AppController {
         }
         else
         {
-            $this->set('id',$postId);
+            $this->set('postId',$postId);
             $this->Post->Meeting->create();
             if($this->Post->Meeting->save($this->request->data))
             {
@@ -132,7 +132,7 @@ class PostsController extends AppController {
             if($this->Post->Meeting->save($this->request->data))
             {
                 $this->Session->setFlash(__('Next Meeting Schedule'));
-                echo $this->redirect('/posts/view/'.$postId);
+                echo $this->redirect('/posts/view/'.$postId);   
             }
         }   
     }
