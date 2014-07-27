@@ -63,32 +63,33 @@ class PostsController extends AppController {
     {
     	if(!$id)
     	{
-    		$this->Session->setFlash(__('Illegal Id value. Where you going>'));
+    		$this->Session->setFlash(__('Illegal Id value. Where you going?'));
     		echo $this->redirect('/users/dashboard');
     	}
     	else
     	{
-    		$result = $this->Post->find('first',array('conditions'=>array('id'=>$id)));
-    		$this->set('postData',$result);
+    		$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$id)));
+    		$this->set('myPdp',$result);
     	}
     }
 
     public function acceptMentee($postId=null)
     {
+    
     	if(!$postId)
     	{
-    		$this->Session->setFlash(__('Illegal Id value. Where you going>'));
+    		$this->Session->setFlash(__('Illegal Id value. Where you going?'));
     		echo $this->redirect('/users/dashboard');
     	}
-    	$result = $this->find('first',array('conditions'=>array('id'=>$postId));
+    	$result = $this->Post->find('first',array('conditions'=>array('Post.id'=>$postId)));
     	if($result['Post']['mentor_id']==0)
     	{
     		$this->Post->id = $postId;
     		$this->request->data['Post']['mentor_id'] = $this->Session->read('Auth.User.id');
-    		if($this->Post->save())
+    		if($this->Post->save($this->request->data))
     		{
     			$this->Session->setFlash(__('Congratulations! You have a new mentee.'));
-    			$this->view($postId);
+    			echo $this->redirect('/posts/view/'.$postId);
     		}
 
     	}
