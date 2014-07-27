@@ -116,6 +116,27 @@ class PostsController extends AppController {
         }
     }
 
+    public function drop($postId)
+    {
+     if($postId==null)
+        {
+         $this->Session->setFlash(__('Illegal Id value. Where you going?'));
+         echo $this->redirect('/users/dashboard');   
+        }
+        else
+        {
+            $this->Post->Meeting->create();
+            $this->Post->Meeting->id = $postId;
+            $this->request->data['Post']['Meeting']['active'] = 1;
+
+            if($this->Post->Meeting->save($this->request->data))
+            {
+                $this->Session->setFlash(__('Next Meeting Schedule'));
+                echo $this->redirect('/posts/view/'.$postId);
+            }
+        }   
+    }
+
 
 }
 
