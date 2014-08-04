@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+For the original description and commit history please refer to Bitbucket.
+
+Link : https://bitbucket.org/vnandan/codeforgoodserver/
+
 CakePHP
 =======
 
