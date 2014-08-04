@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 	$('#dropButton').click(function(e){
 		var postid = $(this).attr('postid');
-		var result = confirm('Are you sure you want to drop this post ?');
+		var result = prompt('Feedback for this project');
 		if(result == true) {
 			window.location.href = '/codeforgoodserver/posts/drop/'+postid;
 		}
@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 	$('#completeButton').click(function(e){
 		var postid = $(this).attr('postid');
-		var result = confirm('Are you sure you want to complete this post ?');
+		var result = prompt('How did you like this project?');
 		if(result == true) {
 			window.location.href = '/codeforgoodserver/posts/complete/'+postid;
 		}
